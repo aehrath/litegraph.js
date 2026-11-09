@@ -454,7 +454,7 @@ export declare class LGraph {
      * Called when a new node is added
      * @param node the instance of the node
      */
-    onNodeAdded(node: LGraphNode): void;
+    onNodeAdded?: (node: LGraphNode) => void;
     /** Removes a node from the graph */
     remove(node: LGraphNode): void;
     /** Returns a node by its id. */
@@ -556,6 +556,15 @@ export declare class LGraph {
      */
     configure(data: object, keep_old?: boolean): boolean | undefined;
     load(url: string): void;
+
+    // Event handlers
+    onNodeAdded?: (node: LGraphNode) => void;
+    onNodeRemoved?: (node: LGraphNode) => void;
+    onNodeSelected?: (node: LGraphNode) => void;
+    onNodeDeselected?: (node: LGraphNode) => void;
+    onNodeConnectionChange?: (node: LGraphNode) => void;
+    onBeforeChange?: () => void;
+    onAfterChange?: () => void;
 }
 
 export type SerializedLLink = [number, string, number, number, number, number];
